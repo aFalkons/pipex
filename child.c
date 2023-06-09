@@ -165,9 +165,9 @@ void	fdwrite(int i, int **fd, int fdfra, t_pipex *pip)
 		close(fd[i][1]);
 		close(fdfra);
 		if (ft_strncmp("here_doc", pip->file1, ft_strlen("here_doc")) == 0)
-			fdfra = open(pip->file2, O_RDWR | O_APPEND | O_CREAT);
+			fdfra = open(pip->file2, O_RDWR | O_APPEND | O_CREAT, S_IRUSR | S_IWUSR);
 		else
-			fdfra = open(pip->file2, O_RDWR | O_TRUNC | O_CREAT);
+			fdfra = open(pip->file2, O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR);
 		dup2(fdfra, STDOUT_FILENO);
 	}
 	else
